@@ -1,4 +1,4 @@
-# Entendiendo Unboxing en C# con GTK#
+# Usando el concepto de Unboxing en C# con GTK#
 
 <p align="justify">
 Es la operación en donde un tipo por referencia se convierte a un tipo simple se denomina <b>Unboxing</b>, esta conversión al igual que el <b>Boxing</b> puede ser explícita o implícita según se requiera.
@@ -22,41 +22,24 @@ Como ejemplo del uso de esta técnica el siguiente programa GTK# solicita dos n�
 Al ejecutar el programa se muestra la siguiente ventana:
 </p>
 <div>
-<IMG src="picture_library/gtkunboxing/fig1.png">
+<IMG src="images/fig1.png">
 </div><br>
 <p align="justify">
 Al ingresar ambos valores y pulsar el botón <i>"Ok"</i> el programa comparará ambos números.
 </p>
 <div>
-<IMG src="picture_library/gtkunboxing/fig2.png">
+<IMG src="images/fig2.png">
 </div><br>
 <div>
-<IMG src="picture_library/gtkunboxing/fig3.png">
+<IMG src="images/fig3.png">
 </div><br>
 <p align="justify">
 En el metódo <i>HandleBtnOkClicked</i> se encuentra toda la funcionalidad, es aquí donde utilizamos la técnica de <b>Unboxing</b>
 </p>
 <pre>
-void HandleBtnOkClicked (object sender, EventArgs e)
-{
- lblError.Text = string.Empty;
- try
- {
  double x,y,temp;
  x = Double.Parse (txtNumber1.Text);//Unboxing string to double
  y = Convert.ToDouble(txtNumber2.Text);//Unboxing 
- if(y > x)
- {
-  temp = x;
-  x = y;
-  y = temp;
- }
- lblMsg.Text = x.ToString() + " greater than " + y.ToString();//Boxing
-}catch(FormatException ex){
- lblMsg.Text = string.Empty;
- lblError.Text = ex.Message;    
-}
-}
 </pre>
 <p>
 En la siguientes líneas, de un tipo por referencia como 
@@ -72,5 +55,5 @@ Es una buena práctica utilizar el código que realiza el <b>Unboxing</b> dentro
 manejar la excepción en caso de que el valor del tipo por referencia (objeto) no sea del mismo tipo que el tipo simple que lo almacenará.
 </p>
 <div>
-<IMG src="picture_library/gtkunboxing/fig4.png">
+<IMG src="images/fig4.png">
 </div><br>
